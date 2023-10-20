@@ -22,9 +22,9 @@
 
 - ansible.builtin.assert:
     that:
-      - "data_criteria_checks[0].found == 'interface Eth1/1'"
-      - "data_criteria_checks[1].found == 'interface Loopback 10'"
-      - "data_criteria_checks[2].found == 'interface po2.1'"
+      - data_criteria_checks[0].found == 'interface Eth1/1'
+      - data_criteria_checks[1].found == 'interface Loopback 10'
+      - data_criteria_checks[2].found == 'interface po2.1'
 
 - name: validate configuration using config (with warnings)
   ansible.builtin.set_fact:
@@ -32,7 +32,7 @@
 
 - ansible.builtin.assert:
     that:
-      - "data_criteria_checks == []"
+      - data_criteria_checks == []
 
 - name: validate configuration using config (all pass)
   ansible.builtin.set_fact:
@@ -40,7 +40,7 @@
 
 - ansible.builtin.assert:
     that:
-      - "data_criteria_checks == []"
+      - data_criteria_checks == []
 
 - name: invalid rules
   ansible.builtin.set_fact:
@@ -50,7 +50,7 @@
 
 - ansible.builtin.assert:
     that:
-      - "result['failed'] == true"
+      - result['failed'] == true
       - '"is not one of \"warn\" or \"fail\"" in result["msg"]'
       - '"missing \"action\" key" in result["msg"]'
       - '"missing \"rule\" key" in result["msg"]'

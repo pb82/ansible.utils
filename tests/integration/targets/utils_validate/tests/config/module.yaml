@@ -27,10 +27,10 @@
 - ansible.builtin.assert:
     that:
       - "'errors' in result"
-      - "result['errors'][0].found == 'interface Eth1/1'"
-      - "result['errors'][1].found == 'interface Loopback 10'"
-      - "result['errors'][2].found == 'interface po2.1'"
-      - "result['failed'] == true"
+      - result['errors'][0].found == 'interface Eth1/1'
+      - result['errors'][1].found == 'interface Loopback 10'
+      - result['errors'][2].found == 'interface po2.1'
+      - result['failed'] == true
       - "'Validation errors were found' in result.msg"
       - "'Ethernet interface names should be in format' in result.msg"
       - "'Loopback interface names should be in format' in result.msg"
@@ -50,7 +50,7 @@
       - "'errors' not in result"
       - "'warnings' in result"
       - "'At line 2: Interface description should not be more than 8 chars' in result['warnings'][0]"
-      - "result['failed'] == false"
+      - result['failed'] == false
       - "'Non-fatal validation errors were found.' in result.msg"
 
 - name: validate configuration using config (all passed)
@@ -64,7 +64,7 @@
     that:
       - "'errors' not in result"
       - "'warnings' not in result"
-      - "result['failed'] == false"
+      - result['failed'] == false
       - "'All checks passed' in result.msg"
 
 - name: invalid rules
@@ -77,7 +77,7 @@
 
 - ansible.builtin.assert:
     that:
-      - "result['failed'] == true"
+      - result['failed'] == true
       - '"is not one of \"warn\" or \"fail\"" in result["msg"]'
       - '"missing \"action\" key" in result["msg"]'
       - '"missing \"rule\" key" in result["msg"]'

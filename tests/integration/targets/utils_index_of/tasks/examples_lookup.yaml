@@ -95,7 +95,7 @@
 
 - name: Find the index of all firewalls, use in a loop
   ansible.builtin.debug:
-    msg: "The type of {{ device_type }} at index {{ item }} has name {{ data[item].name }}."
+    msg: The type of {{ device_type }} at index {{ item }} has name {{ data[item].name }}.
   loop: "{{ lookup('ansible.utils.index_of', data, 'eq', device_type, 'type') }}"
   vars:
     device_type: firewall
@@ -108,10 +108,10 @@
 
 - name: Find the index of all devices with a .corp name
   ansible.builtin.debug:
-    msg: "The device named {{ data[item].name }} is a {{ data[item].type }}"
+    msg: The device named {{ data[item].name }} is a {{ data[item].type }}
   loop: "{{ lookup('ansible.utils.index_of', data, 'regex', expression, 'name') }}"
   vars:
-    expression: '\.corp$'
+    expression: \.corp$
 # ends with .corp
 
 # TASK [Find the index of all devices with a .corp name] *********************
@@ -238,7 +238,7 @@
       {{ data.interfaces.interface[int_idx|int]
           .subinterfaces.subinterface[subint_idx|int]
             .config.description }}
-    # retrieve the index in each nested list
+ # retrieve the index in each nested list
 
 # TASK [Find the description of loopback111, subinterface index 10] ************
 # ok: [sw01] =>

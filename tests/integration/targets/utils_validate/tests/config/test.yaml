@@ -22,7 +22,7 @@
 
 - ansible.builtin.assert:
     that:
-      - "is_data_valid == false"
+      - is_data_valid == false
 
 - name: validate configuration using config (with warnings)
   ansible.builtin.set_fact:
@@ -30,7 +30,7 @@
 
 - ansible.builtin.assert:
     that:
-      - "is_data_valid == true"
+      - is_data_valid == true
 
 - name: validate configuration using config (all pass)
   ansible.builtin.set_fact:
@@ -38,7 +38,7 @@
 
 - ansible.builtin.assert:
     that:
-      - "is_data_valid == true"
+      - is_data_valid == true
 
 - name: invalid rules
   ansible.builtin.set_fact:
@@ -48,7 +48,7 @@
 
 - ansible.builtin.assert:
     that:
-      - "result['failed'] == true"
+      - result['failed'] == true
       - '"is not one of \"warn\" or \"fail\"" in result["msg"]'
       - '"missing \"action\" key" in result["msg"]'
       - '"missing \"rule\" key" in result["msg"]'

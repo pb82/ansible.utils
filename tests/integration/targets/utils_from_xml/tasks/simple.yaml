@@ -1,17 +1,8 @@
 ---
 - name: Setup xml and expected json
   ansible.builtin.set_fact:
-    data: '
-      <netconf-state xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring"><schemas><schema/></schemas></netconf-state>
-      '
-    output:
-      {
-        "netconf-state":
-          {
-            "@xmlns": "urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring",
-            "schemas": { "schema": null },
-          },
-      }
+    data: ' <netconf-state xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring"><schemas><schema/></schemas></netconf-state> '
+    output: { netconf-state: { "@xmlns": urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring, schemas: { schema: !!null "" } } }
 
 - name: Debug
   ansible.builtin.debug:
@@ -26,7 +17,7 @@
 
 - name: Setup invalid xml as input to ansible.utils.from_xml.
   ansible.builtin.set_fact:
-    data: '<netconf-state xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring">'
+    data: <netconf-state xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring">
 
 - name: Validate input xml
   ansible.builtin.set_fact:

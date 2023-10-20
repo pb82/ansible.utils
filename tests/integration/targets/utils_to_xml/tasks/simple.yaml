@@ -2,9 +2,9 @@
 - name: Setup xml
   ansible.builtin.set_fact:
     data:
-      "interface-configurations":
-        "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg"
-        "interface-configuration":
+      interface-configurations:
+        "@xmlns": http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg
+        interface-configuration:
 
 - name: Debug
   ansible.builtin.debug:
@@ -20,8 +20,8 @@
 - name: Test for supported engine for to_xml filter
   ansible.builtin.set_fact:
     data:
-      "interface-configurations":
-        "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg"
+      interface-configurations:
+        "@xmlns": http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg
 
 - name: Validate input xml
   ansible.builtin.set_fact:
