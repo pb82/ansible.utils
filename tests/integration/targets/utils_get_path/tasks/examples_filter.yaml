@@ -45,7 +45,7 @@
 
 - name: Retrieve the value of each path from vars
   ansible.builtin.debug:
-    msg: "The value of path {{ path }} in vars is {{ value }}"
+    msg: The value of path {{ path }} in vars is {{ value }}
   loop: "{{ paths.keys()|list }}"
   loop_control:
     label: "{{ item }}"

@@ -12,7 +12,7 @@
     updates:
       - path: a.b.c.0
         value: 10
-      - path: "a['b']['c'][1]"
+      - path: a['b']['c'][1]
         value: 20
   register: updated
 
@@ -33,7 +33,7 @@
       - path: a
         value:
           x:
-            y:
+            true:
               z:
                 - 100
                 - true
@@ -46,7 +46,7 @@
     expected:
       a:
         x:
-          y:
+          true:
             z:
               - 100
               - true
@@ -54,7 +54,7 @@
 - name: Update the fact
   ansible.utils.update_fact:
     updates:
-      - path: "a.b.c[{{ index }}]"
+      - path: a.b.c[{{ index }}]
         value: 20
   vars:
     index: "{{ a.b.c|ansible.utils.index_of('eq', 2) }}"

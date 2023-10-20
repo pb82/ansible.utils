@@ -79,7 +79,7 @@
 
 - name: Find the index of all firewalls, use in a loop
   ansible.builtin.debug:
-    msg: "The type of {{ device_type }} at index {{ item }} has name {{ data[item].name }}."
+    msg: The type of {{ device_type }} at index {{ item }} has name {{ data[item].name }}.
   loop: "{{ data|ansible.utils.index_of('eq', device_type, 'type') }}"
   vars:
     device_type: firewall
@@ -92,10 +92,10 @@
 
 - name: Find the index of all devices with a .corp name
   ansible.builtin.debug:
-    msg: "The device named {{ data[item].name }} is a {{ data[item].type }}"
+    msg: The device named {{ data[item].name }} is a {{ data[item].type }}
   loop: "{{ data|ansible.utils.index_of('regex', expression, 'name') }}"
   vars:
-    expression: '\.corp$'
+    expression: \.corp$
 # ends with .corp
 
 # TASK [Find the index of all devices with a .corp name] *********************

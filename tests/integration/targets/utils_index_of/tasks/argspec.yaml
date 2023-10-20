@@ -22,7 +22,7 @@
   ansible.builtin.assert:
     that: "{{ msg in result.msg }}"
   vars:
-    msg: "cannot be converted to a list"
+    msg: cannot be converted to a list
 
 - name: Check argspec validation with filter (missing params)
   ansible.builtin.set_fact:
@@ -46,7 +46,7 @@
   ansible.builtin.assert:
     that: "{{ msg in result.msg }}"
   vars:
-    msg: "cannot be converted to a list"
+    msg: cannot be converted to a list
 
 - name: Check argspec validation with lookup (missing params)
   ansible.builtin.set_fact:
